@@ -29,9 +29,9 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStripUpPanel_GAA = new System.Windows.Forms.MenuStrip();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +50,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             this.radioButtonFunct_GAA = new System.Windows.Forms.RadioButton();
             this.buttonSearch_GAA = new System.Windows.Forms.Button();
             this.buttonRemove_GAA = new System.Windows.Forms.Button();
-            this.buttonGraphic_GAA = new System.Windows.Forms.Button();
+            this.buttonDeleteChart_GAA = new System.Windows.Forms.Button();
             this.buttonUpdate_GAA = new System.Windows.Forms.Button();
             this.buttonClear_GAA = new System.Windows.Forms.Button();
             this.buttonAdd_GAA = new System.Windows.Forms.Button();
@@ -78,6 +78,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             this.groupBoxGraphic_GAA = new System.Windows.Forms.GroupBox();
             this.chartGraphic_GAA = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.splitterBtw_GAA = new System.Windows.Forms.Splitter();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStripUpPanel_GAA.SuspendLayout();
             this.panelUp_GAA.SuspendLayout();
             this.groupBoxTools_GAA.SuspendLayout();
@@ -176,7 +177,8 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             this.groupBoxTools_GAA.Controls.Add(this.radioButtonFunct_GAA);
             this.groupBoxTools_GAA.Controls.Add(this.buttonSearch_GAA);
             this.groupBoxTools_GAA.Controls.Add(this.buttonRemove_GAA);
-            this.groupBoxTools_GAA.Controls.Add(this.buttonGraphic_GAA);
+            this.groupBoxTools_GAA.Controls.Add(this.button1);
+            this.groupBoxTools_GAA.Controls.Add(this.buttonDeleteChart_GAA);
             this.groupBoxTools_GAA.Controls.Add(this.buttonUpdate_GAA);
             this.groupBoxTools_GAA.Controls.Add(this.buttonClear_GAA);
             this.groupBoxTools_GAA.Controls.Add(this.buttonAdd_GAA);
@@ -190,7 +192,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             // radioButtonDiag_GAA
             // 
             this.radioButtonDiag_GAA.AutoSize = true;
-            this.radioButtonDiag_GAA.Location = new System.Drawing.Point(362, 71);
+            this.radioButtonDiag_GAA.Location = new System.Drawing.Point(364, 74);
             this.radioButtonDiag_GAA.Name = "radioButtonDiag_GAA";
             this.radioButtonDiag_GAA.Size = new System.Drawing.Size(85, 17);
             this.radioButtonDiag_GAA.TabIndex = 3;
@@ -208,7 +210,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             // radioButtonGist_GAA
             // 
             this.radioButtonGist_GAA.AutoSize = true;
-            this.radioButtonGist_GAA.Location = new System.Drawing.Point(439, 48);
+            this.radioButtonGist_GAA.Location = new System.Drawing.Point(441, 51);
             this.radioButtonGist_GAA.Name = "radioButtonGist_GAA";
             this.radioButtonGist_GAA.Size = new System.Drawing.Size(93, 17);
             this.radioButtonGist_GAA.TabIndex = 1;
@@ -219,7 +221,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             // radioButtonFunct_GAA
             // 
             this.radioButtonFunct_GAA.AutoSize = true;
-            this.radioButtonFunct_GAA.Location = new System.Drawing.Point(362, 48);
+            this.radioButtonFunct_GAA.Location = new System.Drawing.Point(364, 51);
             this.radioButtonFunct_GAA.Name = "radioButtonFunct_GAA";
             this.radioButtonFunct_GAA.Size = new System.Drawing.Size(71, 17);
             this.radioButtonFunct_GAA.TabIndex = 2;
@@ -247,15 +249,16 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             this.buttonRemove_GAA.UseVisualStyleBackColor = true;
             this.buttonRemove_GAA.Click += new System.EventHandler(this.buttonRemove_GAA_Click);
             // 
-            // buttonGraphic_GAA
+            // buttonDeleteChart_GAA
             // 
-            this.buttonGraphic_GAA.Location = new System.Drawing.Point(362, 19);
-            this.buttonGraphic_GAA.Name = "buttonGraphic_GAA";
-            this.buttonGraphic_GAA.Size = new System.Drawing.Size(191, 23);
-            this.buttonGraphic_GAA.TabIndex = 0;
-            this.buttonGraphic_GAA.Text = "Вывести график";
-            this.buttonGraphic_GAA.UseVisualStyleBackColor = true;
-            this.buttonGraphic_GAA.Click += new System.EventHandler(this.buttonGraphic_GAA_Click);
+            this.buttonDeleteChart_GAA.Enabled = false;
+            this.buttonDeleteChart_GAA.Location = new System.Drawing.Point(461, 19);
+            this.buttonDeleteChart_GAA.Name = "buttonDeleteChart_GAA";
+            this.buttonDeleteChart_GAA.Size = new System.Drawing.Size(99, 23);
+            this.buttonDeleteChart_GAA.TabIndex = 0;
+            this.buttonDeleteChart_GAA.Text = "Удалить график";
+            this.buttonDeleteChart_GAA.UseVisualStyleBackColor = true;
+            this.buttonDeleteChart_GAA.Click += new System.EventHandler(this.buttonDeleteChart_GAA_Click);
             // 
             // buttonUpdate_GAA
             // 
@@ -494,18 +497,18 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             // 
             // chartGraphic_GAA
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartGraphic_GAA.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chartGraphic_GAA.ChartAreas.Add(chartArea2);
             this.chartGraphic_GAA.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chartGraphic_GAA.Legends.Add(legend1);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chartGraphic_GAA.Legends.Add(legend2);
             this.chartGraphic_GAA.Location = new System.Drawing.Point(3, 16);
             this.chartGraphic_GAA.Name = "chartGraphic_GAA";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartGraphic_GAA.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartGraphic_GAA.Series.Add(series2);
             this.chartGraphic_GAA.Size = new System.Drawing.Size(538, 383);
             this.chartGraphic_GAA.TabIndex = 0;
             this.chartGraphic_GAA.Text = "График";
@@ -518,6 +521,16 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             this.splitterBtw_GAA.Size = new System.Drawing.Size(3, 402);
             this.splitterBtw_GAA.TabIndex = 4;
             this.splitterBtw_GAA.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(360, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Вывести график";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonGraphic_GAA_Click);
             // 
             // FormMain
             // 
@@ -585,7 +598,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         private System.Windows.Forms.Button buttonRemove_GAA;
         private System.Windows.Forms.TextBox textBoxSearch_GAA;
         private System.Windows.Forms.Button buttonSearch_GAA;
-        private System.Windows.Forms.Button buttonGraphic_GAA;
+        private System.Windows.Forms.Button buttonDeleteChart_GAA;
         private System.Windows.Forms.RadioButton radioButtonDiag_GAA;
         private System.Windows.Forms.RadioButton radioButtonFunct_GAA;
         private System.Windows.Forms.RadioButton radioButtonGist_GAA;
@@ -601,6 +614,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         private System.Windows.Forms.GroupBox groupBoxGraphic_GAA;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartGraphic_GAA;
         private System.Windows.Forms.Splitter splitterBtw_GAA;
+        private System.Windows.Forms.Button button1;
     }
 }
 

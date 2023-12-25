@@ -284,14 +284,8 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
                         chartGraphic_GAA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
                         this.chartGraphic_GAA.ChartAreas[0].AxisX.Title = "Автор";
-                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Кол-во книг";
-
-                        Dictionary<string, int> ExceptionMessages = new Dictionary<string, int>();
-
-                        ExceptionMessages.Add(Convert.ToString(dataGridViewBaza_GAA.Rows[i].Cells["Автор"].Value), 20);
-
-                        foreach (KeyValuePair<string, int> exception in ExceptionMessages)
-                            chartGraphic_GAA.Series[0].Points.AddXY(exception.Key, exception.Value);
+                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Год_издания";
+                        chartGraphic_GAA.Series[0].Points.AddXY(dataGridViewBaza_GAA.Rows[i].Cells["Автор"].Value, dataGridViewBaza_GAA.Rows[i].Cells["Год_издания"].Value);
 
                     }
                 }
@@ -300,16 +294,21 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
                     for (int i = 0; i < dataGridViewBaza_GAA.Rows.Count; i++)
                     {
                         chartGraphic_GAA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+                        this.chartGraphic_GAA.ChartAreas[0].AxisX.Title = "Автор";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Колличество книг";
 
-                        this.chartGraphic_GAA.ChartAreas[0].AxisX.Title = "Год издания";
-                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Цена";
+                        int count = 0;
 
-                        int x = Convert.ToInt32(dataGridViewBaza_GAA.Rows[i].Cells["Год_издания"].Value);
-                        int y = Convert.ToInt32(dataGridViewBaza_GAA.Rows[i].Cells["Цена_р."].Value);
-                        chartGraphic_GAA.Series[0].Points.AddXY(x, y);
+                        if (dataGridViewBaza_GAA.Rows[i].Cells[1].Value == dataGridViewBaza_GAA.Rows[i].Cells[1].Value)
+                        {
+                            count += (int)dataGridViewBaza_GAA.RowCount;
+                        }
 
+                        chartGraphic_GAA.Series[0].Points.AddXY(dataGridViewBaza_GAA.Rows[i].Cells["Автор"].Value, count);
                     }
+
                 }
+                buttonDeleteChart_GAA.Enabled = true;
             }
             catch
             {
@@ -320,6 +319,11 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         private void chartGraphic_GAA_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonDeleteChart_GAA_Click(object sender, EventArgs e)
+        {
+            chartGraphic_GAA.Series[0].Points.Clear();
         }
     }
 }
