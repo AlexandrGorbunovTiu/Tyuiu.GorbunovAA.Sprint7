@@ -24,8 +24,8 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         {
             InitializeComponent();
 
-            openFileDialogBaza_ZDA.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
-            saveFileDialogBaza_ZDA.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            openFileDialogBaza_GAA.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            saveFileDialogBaza_GAA.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
         }
 
         static string openFilePath;
@@ -46,9 +46,10 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         private void справочнаяИнформацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormInfo formInfo = new FormInfo();
+            formInfo.ShowDialog();
         }
 
-        private void FormMain_ZDA_Load(object sender, EventArgs e)
+        private void FormMain_GAA_Load(object sender, EventArgs e)
         {
             table.Columns.Add("Год_издания", typeof(int));
             table.Columns.Add("Автор", typeof(string));
@@ -59,15 +60,15 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             table.Columns.Add("Дата_выдачи", typeof(string));
             table.Columns.Add("Дата_сдачи", typeof(string));
             data.Tables.Add(table);
-            dataGridViewBaza_ZDA.DataSource = data.Tables["LBaza"];
+            dataGridViewBaza_GAA.DataSource = data.Tables["LBaza"];
         }
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                openFileDialogBaza_ZDA.ShowDialog();
-                openFilePath = openFileDialogBaza_ZDA.FileName;
+                openFileDialogBaza_GAA.ShowDialog();
+                openFilePath = openFileDialogBaza_GAA.FileName;
 
                 StreamReader sr = new StreamReader(openFilePath, Encoding.Default);
 
@@ -79,7 +80,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
                     string[] items = r.Split(";".ToCharArray());
                     data.Tables["LBaza"].Rows.Add(items);
                 }
-                this.dataGridViewBaza_ZDA.DataSource = data.Tables["LBaza"].DefaultView;
+                this.dataGridViewBaza_GAA.DataSource = data.Tables["LBaza"].DefaultView;
 
             }
             catch
@@ -92,11 +93,11 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
         {
             try
             {
-                saveFileDialogBaza_ZDA.FileName = "OutPutBaza.csv";
-                saveFileDialogBaza_ZDA.InitialDirectory = Directory.GetCurrentDirectory();
-                saveFileDialogBaza_ZDA.ShowDialog();
+                saveFileDialogBaza_GAA.FileName = "OutPutBaza.csv";
+                saveFileDialogBaza_GAA.InitialDirectory = Directory.GetCurrentDirectory();
+                saveFileDialogBaza_GAA.ShowDialog();
 
-                string path = saveFileDialogBaza_ZDA.FileName;
+                string path = saveFileDialogBaza_GAA.FileName;
 
                 FileInfo fileInfo = new FileInfo(path);
                 bool fileExists = fileInfo.Exists;
@@ -106,8 +107,8 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
                     File.Delete(path);
                 }
 
-                int rows = dataGridViewBaza_ZDA.RowCount;
-                int columns = dataGridViewBaza_ZDA.ColumnCount;
+                int rows = dataGridViewBaza_GAA.RowCount;
+                int columns = dataGridViewBaza_GAA.ColumnCount;
 
                 string str = "";
 
@@ -117,11 +118,11 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
                     {
                         if (j != columns - 1)
                         {
-                            str = str + dataGridViewBaza_ZDA.Rows[i].Cells[j].Value + ";";
+                            str = str + dataGridViewBaza_GAA.Rows[i].Cells[j].Value + ";";
                         }
                         else
                         {
-                            str = str + dataGridViewBaza_ZDA.Rows[i].Cells[j].Value;
+                            str = str + dataGridViewBaza_GAA.Rows[i].Cells[j].Value;
                         }
                     }
                     File.AppendAllText(path, str + Environment.NewLine);
@@ -135,20 +136,20 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             }
         }
 
-        private void dataGridViewBaza_ZDA_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewBaza_GAA_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 index = e.RowIndex;
-                DataGridViewRow row = dataGridViewBaza_ZDA.Rows[index];
-                textBoxYear_ZDA.Text = row.Cells[0].Value.ToString();
-                textBoxAuthor_ZDA.Text = row.Cells[1].Value.ToString();
-                textBoxBookName_ZDA.Text = row.Cells[2].Value.ToString();
-                textBoxPrice_ZDA.Text = row.Cells[3].Value.ToString();
-                textBoxFIO_ZDA.Text = row.Cells[4].Value.ToString();
-                textBoxNumberTicket_ZDA.Text = row.Cells[5].Value.ToString();
-                textBoxDataGet_ZDA.Text = row.Cells[6].Value.ToString();
-                textBoxDataGive_ZDA.Text = row.Cells[7].Value.ToString();
+                DataGridViewRow row = dataGridViewBaza_GAA.Rows[index];
+                textBoxYear_GAA.Text = row.Cells[0].Value.ToString();
+                textBoxAuthor_GAA.Text = row.Cells[1].Value.ToString();
+                textBoxBookName_GAA.Text = row.Cells[2].Value.ToString();
+                textBoxPrice_GAA.Text = row.Cells[3].Value.ToString();
+                textBoxFIO_GAA.Text = row.Cells[4].Value.ToString();
+                textBoxNumberTicket_GAA.Text = row.Cells[5].Value.ToString();
+                textBoxDataGet_GAA.Text = row.Cells[6].Value.ToString();
+                textBoxDataGive_GAA.Text = row.Cells[7].Value.ToString();
             }
             catch
             {
@@ -156,11 +157,11 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             }
         }
 
-        private void buttonAdd_ZDA_Click(object sender, EventArgs e)
+        private void buttonAdd_GAA_Click(object sender, EventArgs e)
         {
-            for (int item = 0; item < dataGridViewBaza_ZDA.Rows.Count; item++)
+            for (int item = 0; item < dataGridViewBaza_GAA.Rows.Count; item++)
             {
-                if (textBoxNumberTicket_ZDA.Text == dataGridViewBaza_ZDA.Rows[item].Cells[5].Value.ToString())
+                if (textBoxNumberTicket_GAA.Text == dataGridViewBaza_GAA.Rows[item].Cells[5].Value.ToString())
                 {
                     MessageBox.Show("Номер билета не может быть одинаковым!", "Внимание!");
                     return;
@@ -168,21 +169,21 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             }
             try
             {
-                if (textBoxYear_ZDA.Text == "" ||
-                    textBoxAuthor_ZDA.Text == "" ||
-                    textBoxBookName_ZDA.Text == "" ||
-                    textBoxPrice_ZDA.Text == "" ||
-                    textBoxFIO_ZDA.Text == "" ||
-                    textBoxNumberTicket_ZDA.Text == "" ||
-                    textBoxDataGet_ZDA.Text == "" ||
-                    textBoxDataGive_ZDA.Text == "")
+                if (textBoxYear_GAA.Text == "" ||
+                    textBoxAuthor_GAA.Text == "" ||
+                    textBoxBookName_GAA.Text == "" ||
+                    textBoxPrice_GAA.Text == "" ||
+                    textBoxFIO_GAA.Text == "" ||
+                    textBoxNumberTicket_GAA.Text == "" ||
+                    textBoxDataGet_GAA.Text == "" ||
+                    textBoxDataGive_GAA.Text == "")
                 {
                     MessageBox.Show("Не все данные введены!", "Внимание!");
                     return;
                 }
                 else
                 {
-                    table.Rows.Add(textBoxYear_ZDA.Text, textBoxAuthor_ZDA.Text, textBoxBookName_ZDA.Text, textBoxPrice_ZDA.Text, textBoxFIO_ZDA.Text, textBoxNumberTicket_ZDA.Text, textBoxDataGet_ZDA.Text, textBoxDataGive_ZDA.Text);
+                    table.Rows.Add(textBoxYear_GAA.Text, textBoxAuthor_GAA.Text, textBoxBookName_GAA.Text, textBoxPrice_GAA.Text, textBoxFIO_GAA.Text, textBoxNumberTicket_GAA.Text, textBoxDataGet_GAA.Text, textBoxDataGive_GAA.Text);
                     MessageBox.Show("Данные добавлены!", "Внимание!");
                 }
             }
@@ -192,120 +193,120 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             }
         }
 
-        private void buttonClear_ZDA_Click(object sender, EventArgs e)
+        private void buttonClear_GAA_Click(object sender, EventArgs e)
         {
-            textBoxYear_ZDA.Text = String.Empty;
-            textBoxAuthor_ZDA.Text = String.Empty;
-            textBoxBookName_ZDA.Text = String.Empty;
-            textBoxPrice_ZDA.Text = String.Empty;
-            textBoxFIO_ZDA.Text = String.Empty;
-            textBoxNumberTicket_ZDA.Text = String.Empty;
-            textBoxDataGet_ZDA.Text = String.Empty;
-            textBoxDataGive_ZDA.Text = String.Empty;
+            textBoxYear_GAA.Text = String.Empty;
+            textBoxAuthor_GAA.Text = String.Empty;
+            textBoxBookName_GAA.Text = String.Empty;
+            textBoxPrice_GAA.Text = String.Empty;
+            textBoxFIO_GAA.Text = String.Empty;
+            textBoxNumberTicket_GAA.Text = String.Empty;
+            textBoxDataGet_GAA.Text = String.Empty;
+            textBoxDataGive_GAA.Text = String.Empty;
         }
 
-        private void buttonRemove_ZDA_Click(object sender, EventArgs e)
+        private void buttonRemove_GAA_Click(object sender, EventArgs e)
         {
-            if (dataGridViewBaza_ZDA.SelectedRows.Count != 1)
+            if (dataGridViewBaza_GAA.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Выберите одну строку!", "Внимание!");
                 return;
             }
-            index = dataGridViewBaza_ZDA.CurrentCell.RowIndex;
-            dataGridViewBaza_ZDA.Rows.RemoveAt(index);
+            index = dataGridViewBaza_GAA.CurrentCell.RowIndex;
+            dataGridViewBaza_GAA.Rows.RemoveAt(index);
         }
 
-        private void buttonSearch_ZDA_Click(object sender, EventArgs e)
+        private void buttonSearch_GAA_Click(object sender, EventArgs e)
         {
             DataView author = table.DefaultView;
-            author.RowFilter = $"Автор Like '%{textBoxSearch_ZDA.Text}%'";
+            author.RowFilter = $"Автор Like '%{textBoxSearch_GAA.Text}%'";
         }
 
-        private void buttonUpdate_ZDA_Click(object sender, EventArgs e)
+        private void buttonUpdate_GAA_Click(object sender, EventArgs e)
         {
-            if (dataGridViewBaza_ZDA.SelectedRows.Count != 1)
+            if (dataGridViewBaza_GAA.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Выберите одну строку!", "Внимание!");
                 return;
             }
-            if (textBoxYear_ZDA.Text == "" ||
-                   textBoxAuthor_ZDA.Text == "" ||
-                   textBoxBookName_ZDA.Text == "" ||
-                   textBoxPrice_ZDA.Text == "" ||
-                   textBoxFIO_ZDA.Text == "" ||
-                   textBoxNumberTicket_ZDA.Text == "" ||
-                   textBoxDataGet_ZDA.Text == "" ||
-                   textBoxDataGive_ZDA.Text == "")
+            if (textBoxYear_GAA.Text == "" ||
+                   textBoxAuthor_GAA.Text == "" ||
+                   textBoxBookName_GAA.Text == "" ||
+                   textBoxPrice_GAA.Text == "" ||
+                   textBoxFIO_GAA.Text == "" ||
+                   textBoxNumberTicket_GAA.Text == "" ||
+                   textBoxDataGet_GAA.Text == "" ||
+                   textBoxDataGive_GAA.Text == "")
             {
                 MessageBox.Show("Не все данные введены!", "Внимание!");
                 return;
             }
             else
             {
-                DataGridViewRow newdata = dataGridViewBaza_ZDA.Rows[index];
-                newdata.Cells[0].Value = textBoxYear_ZDA.Text;
-                newdata.Cells[1].Value = textBoxAuthor_ZDA.Text;
-                newdata.Cells[2].Value = textBoxBookName_ZDA.Text;
-                newdata.Cells[3].Value = textBoxPrice_ZDA.Text;
-                newdata.Cells[4].Value = textBoxFIO_ZDA.Text;
-                newdata.Cells[5].Value = textBoxNumberTicket_ZDA.Text;
-                newdata.Cells[6].Value = textBoxDataGet_ZDA.Text;
-                newdata.Cells[7].Value = textBoxDataGive_ZDA.Text;
+                DataGridViewRow newdata = dataGridViewBaza_GAA.Rows[index];
+                newdata.Cells[0].Value = textBoxYear_GAA.Text;
+                newdata.Cells[1].Value = textBoxAuthor_GAA.Text;
+                newdata.Cells[2].Value = textBoxBookName_GAA.Text;
+                newdata.Cells[3].Value = textBoxPrice_GAA.Text;
+                newdata.Cells[4].Value = textBoxFIO_GAA.Text;
+                newdata.Cells[5].Value = textBoxNumberTicket_GAA.Text;
+                newdata.Cells[6].Value = textBoxDataGet_GAA.Text;
+                newdata.Cells[7].Value = textBoxDataGive_GAA.Text;
                 MessageBox.Show("Данные добавлены!", "Внимание!");
             }
 
         }
 
-        private void buttonGraphic_ZDA_Click(object sender, EventArgs e)
+        private void buttonGraphic_GAA_Click(object sender, EventArgs e)
         {
             try
             {
-                if(radioButtonGist_ZDA.Checked)
+                if(radioButtonGist_GAA.Checked)
                 {
-                    for (int i = 0; i < dataGridViewBaza_ZDA.Rows.Count; i++)
+                    for (int i = 0; i < dataGridViewBaza_GAA.Rows.Count; i++)
                     {
-                        chartGraphic_ZDA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        chartGraphic_GAA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
-                        this.chartGraphic_ZDA.ChartAreas[0].AxisX.Title = "Год издания";
-                        this.chartGraphic_ZDA.ChartAreas[0].AxisY.Title = "Цена";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisX.Title = "Год издания";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Цена";
 
-                        int x = Convert.ToInt32(dataGridViewBaza_ZDA.Rows[i].Cells["Год_издания"].Value);
-                        int y = Convert.ToInt32(dataGridViewBaza_ZDA.Rows[i].Cells["Цена_р."].Value);
-                        chartGraphic_ZDA.Series[0].Points.AddXY(x, y);
+                        int x = Convert.ToInt32(dataGridViewBaza_GAA.Rows[i].Cells["Год_издания"].Value);
+                        int y = Convert.ToInt32(dataGridViewBaza_GAA.Rows[i].Cells["Цена_р."].Value);
+                        chartGraphic_GAA.Series[0].Points.AddXY(x, y);
 
                     }
                 }
 
-                if (radioButtonFunct_ZDA.Checked)
+                if (radioButtonFunct_GAA.Checked)
                 {
-                    for (int i = 0; i < dataGridViewBaza_ZDA.Rows.Count; i++)
+                    for (int i = 0; i < dataGridViewBaza_GAA.Rows.Count; i++)
                     {
-                        chartGraphic_ZDA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                        chartGraphic_GAA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
-                        this.chartGraphic_ZDA.ChartAreas[0].AxisX.Title = "Автор";
-                        this.chartGraphic_ZDA.ChartAreas[0].AxisY.Title = "Кол-во книг";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisX.Title = "Автор";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Кол-во книг";
 
                         Dictionary<string, int> ExceptionMessages = new Dictionary<string, int>();
 
-                        ExceptionMessages.Add(Convert.ToString(dataGridViewBaza_ZDA.Rows[i].Cells["Автор"].Value), 20);
+                        ExceptionMessages.Add(Convert.ToString(dataGridViewBaza_GAA.Rows[i].Cells["Автор"].Value), 20);
 
                         foreach (KeyValuePair<string, int> exception in ExceptionMessages)
-                            chartGraphic_ZDA.Series[0].Points.AddXY(exception.Key, exception.Value);
+                            chartGraphic_GAA.Series[0].Points.AddXY(exception.Key, exception.Value);
 
                     }
                 }
-                if (radioButtonDiag_ZDA.Checked)
+                if (radioButtonDiag_GAA.Checked)
                 {
-                    for (int i = 0; i < dataGridViewBaza_ZDA.Rows.Count; i++)
+                    for (int i = 0; i < dataGridViewBaza_GAA.Rows.Count; i++)
                     {
-                        chartGraphic_ZDA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+                        chartGraphic_GAA.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
-                        this.chartGraphic_ZDA.ChartAreas[0].AxisX.Title = "Год издания";
-                        this.chartGraphic_ZDA.ChartAreas[0].AxisY.Title = "Цена";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisX.Title = "Год издания";
+                        this.chartGraphic_GAA.ChartAreas[0].AxisY.Title = "Цена";
 
-                        int x = Convert.ToInt32(dataGridViewBaza_ZDA.Rows[i].Cells["Год_издания"].Value);
-                        int y = Convert.ToInt32(dataGridViewBaza_ZDA.Rows[i].Cells["Цена_р."].Value);
-                        chartGraphic_ZDA.Series[0].Points.AddXY(x, y);
+                        int x = Convert.ToInt32(dataGridViewBaza_GAA.Rows[i].Cells["Год_издания"].Value);
+                        int y = Convert.ToInt32(dataGridViewBaza_GAA.Rows[i].Cells["Цена_р."].Value);
+                        chartGraphic_GAA.Series[0].Points.AddXY(x, y);
 
                     }
                 }
@@ -316,7 +317,7 @@ namespace Tyuiu.GorbunovAA.Sprint7.Project.V4
             }
         }
 
-        private void chartGraphic_ZDA_Click(object sender, EventArgs e)
+        private void chartGraphic_GAA_Click(object sender, EventArgs e)
         {
 
         }
